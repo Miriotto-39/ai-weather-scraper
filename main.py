@@ -13,14 +13,14 @@ app = FastAPI()
 
 @app.get("/make-report")
 def make_report():
-    # 1. あなたが見つけたリンク（ここにご自身で見つけたURLを入れてください！）
+    # URL取得
     url = "https://weather.yahoo.co.jp/weather/jp/15/5420/15202.html"
     
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     short_text = soup.get_text()[:2000]
 
-    # 2. AIにまとめさせる
+    # AI要約
     ai_response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -30,8 +30,8 @@ def make_report():
     )
     result_text = ai_response.choices[0].message.content
 
-    # 3. 【新機能】結果をテキストファイルとして保存する
-    # 現在の時刻を取得してファイル名にする（例：report_20260414_2259.txt）
+    # テキストファイルで保存
+    # 現在の時刻を取得してファイル名にする
     now = datetime.now().strftime("%Y%m%d_%H%M")
     filename = f"report_{now}.txt"
     
