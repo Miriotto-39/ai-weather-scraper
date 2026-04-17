@@ -111,4 +111,4 @@ ai-weather-scraper/
 
 **Miriotto-39**
 - GitHub: [@Miriotto-39](https://github.com/Miriotto-39)
-- クラウドワークス：（プロフィールURLをここに記載）
+- クラウドワークス：(https://crowdworks.jp/public/employees/6513601)
